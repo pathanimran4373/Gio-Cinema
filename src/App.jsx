@@ -14,7 +14,7 @@ import SearchResult from './pages/searchResult/SearchResult'
 import Explore from './pages/explore/Explore'
 import LogIn from "./componants/resisterUser/login/LogIn"
 import SignUp from "./componants/resisterUser/signUp/SignUp";
-
+import PageNotFound from "./pages/404/pageNotFound";
 
 function App() {
 
@@ -65,13 +65,14 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/:mediaType/:id" element={<Details />}></Route>
-        <Route path="movies/:type" element={<MovieList />}></Route>
-        <Route path="/search/:query" element={<SearchResult />}></Route>
-        <Route path="/explore/:mediaType" element={<Explore />}></Route>
-        <Route path="/login" element={<LogIn />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/:mediaType/:id" element={<Details/>}></Route>
+        <Route path="movies/:type" element={<MovieList/>}></Route>
+        <Route path="/search/:query" element={<SearchResult/>}></Route>
+        <Route path="/explore/:mediaType" element={<Explore/>}></Route>
+        <Route path="/login" element={<LogIn/>}></Route>
+        <Route path="/signup" element={<SignUp/>}></Route>
+        <Route path="*" element={<PageNotFound/>}></Route>
 
       </Routes>
       <Footer />
