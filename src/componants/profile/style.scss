@@ -1,0 +1,85 @@
+.registerSection {
+    .profileIcon {
+        margin-left: 20px;
+        color: white;
+        font-size: 30px;
+        &:hover{
+            color: red;
+            cursor: pointer;
+        }
+    }
+
+    .profilePage {
+        background-color: black;
+        position: absolute;
+        right: -100%;
+        z-index: 99;
+        transition: 1s;
+        margin-top: 13px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        padding: 80px 10px 0px 20px;
+        justify-content: start;
+
+        .nav-close-btn {
+            background-color: red;
+            cursor: pointer;
+            font-size: 15px;
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+        }
+
+        .profileBlok {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+
+            .profileImage {
+                font-size: 40px;
+                margin-right: 10px;
+                color: white;
+            }
+
+            h2 {
+                color: white;
+            }
+            span {
+                color:purple;
+                font-size: 30px;
+
+            }
+        }
+
+        h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        span {
+            margin: 10px 0;
+            color: white;
+
+            .profile-link {
+                text-decoration: none;
+                color: white;
+                &:hover {
+                    color: red;
+                }
+            }
+
+           
+
+            &:hover {
+                cursor: pointer;
+                color: red;
+            }
+        }
+    }
+
+ .Active {
+        right: 0;
+    }
+}

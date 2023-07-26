@@ -1,0 +1,111 @@
+import InfiniteScroll from "react-infinite-scroll-component"
+import Spinner from "../spinner/spinner";
+import React, { useEffect, useState } from "react"
+import "./style.scss"
+import { useParams } from "react-router-dom"
+import Cards from "../card/Card"
+import ContentWrapper from "../contentWrapper/ContentWrapper"
+
+
+const SearchResult = () => {
+    const [data, setData] = useState([])
+    const { type } = useParams()
+
+    const [pageNum, setPageNum] = useState(1);
+    const [loading, setLoading] = useState(false);
+
+    const fetchInitialData = () => {
+        setLoading(true)
+
+        fetch(`https://api.themoviedb.org/3/movie/${type ? type : "popular"}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${pageNum}`)
+            .then(res => res.json())
+            .then(data => setData(data.results))
+            console.log(data)
+        setPageNum((prev) => prev + 1);
+
+        setLoading(false)
+
+    }
+
+    const fetchNextPageData = () => {
+        fetch(`https://api.themoviedb.org/3/movie/${type ? type : "popular"}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=${pageNum}`)
+            .then((res) => {
+                if (data?.results) {
+                    setData({
+                        ...data, results: [...data?.results, ...res.results]
+                    })
+                }
+                setPageNum((prev) => prev + 1);
+
+            })
+    }
+
+    useEffect(() => {
+        fetchInitialData();
+    }, [type])
+
+
+    // const fetchInitialData =()=>{
+    //   setLoading(true)
+    //   fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then((res)=>{
+    //     setData(res)
+    //     setPageNum((prev)=>prev + 1);
+    //     setLoading(false)
+    //   })
+    // };
+    // const fetchNextPageData =()=>{
+    //   fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then((res)=>{
+    //     if(data?.results){
+    //       setData({
+    //         ...data,results: [...data?.results,...res.results]
+    //       })
+    //     } else {
+    //       setData(res);
+    //     }
+    //     setPageNum((prev)=>prev + 1);
+
+    //   })
+    // }
+    // useEffect(()=>{
+    //   setPageNum(1);
+    //   fetchInitialData();
+    // },[query])
+
+    return (
+        <>
+            <div className="searchResultsPage">
+                {loading && <Spinner initial={true} />}
+                {!loading && (
+                    <ContentWrapper>
+                        {data?.results?.length > 0 ? (
+                            <>
+
+                                <InfiniteScroll
+                                 dataLength={data?.results?.length || []}
+                                    next={fetchNextPageData}
+                                    hasMore={pageNum <= data?.total_pages}
+                                    loader={<Spinner />}>
+                                    {
+                                        data.map(movie => {
+                                            console.log(movie)
+                                            return (
+                                                <Cards movie={movie} />
+
+                                            )
+                                        })
+                                    }
+                                </InfiniteScroll>
+                            </>
+                        ) : (
+                            <span className="resultNotFound">
+                                Sorry,Result Not found!
+                            </span>
+                        )}
+                    </ContentWrapper>
+                )}
+            </div>
+        </>
+    )
+}
+
+export default SearchResult
