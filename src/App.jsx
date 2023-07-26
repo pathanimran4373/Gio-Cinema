@@ -14,7 +14,7 @@ import SearchResult from './pages/searchResult/SearchResult'
 import Explore from './pages/explore/Explore'
 import LogIn from "./componants/resisterUser/login/LogIn"
 import SignUp from "./componants/resisterUser/signUp/SignUp";
-import PageNotFound from "./pages/404/pageNotFound";
+import ErrorPage from "./pages/404/ErrorPage";
 
 function App() {
 
@@ -72,7 +72,7 @@ function App() {
         <Route path="/explore/:mediaType" element={<Explore/>}></Route>
         <Route path="/login" element={<LogIn/>}></Route>
         <Route path="/signup" element={<SignUp/>}></Route>
-        <Route path="*" element={<PageNotFound/>}></Route>
+        <Route path="*" element={<ErrorPage/>}></Route>
 
       </Routes>
       <Footer />
