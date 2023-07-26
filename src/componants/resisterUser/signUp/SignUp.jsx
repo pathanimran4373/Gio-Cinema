@@ -50,7 +50,7 @@ function ResisterPage() {
 
                         <input type="submit" value="Sign Up" className="btn" onClick={handleSubmit} />
 
-                        <p className='botomLine'>Alredy user ? <span><Link className='botomLink'to="/login">Log In</Link></span></p>
+                        <p className='botomLine'>Alredy user ? <span><Link className='botomLink'to="/login">Sign In</Link></span></p>
 
                     </form>
 

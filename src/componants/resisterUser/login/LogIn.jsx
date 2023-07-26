@@ -28,16 +28,16 @@ function SignUp() {
             <div className="login-form-container">
 
                 <form action="" className='login-box'>
-                    <h3>Sign In</h3>
+                    <h3>Sign In to JioCinema</h3>
                     <input type="email" placeholder="email" className="box" value={email} onChange={(e) => setEmail(e.target.value)} />
                     <hr className='hrLine'></hr>
 
                     <input type="password" placeholder="password" className="box" value={password} onChange={(e) => setPassword(e.target.value)} />
                     <hr className='hrLine'></hr>
 
-                    <input type="submit" value="Sign Up" className="btn" onClick={handleChange} />
+                    <input type="submit" value="Sign In" className="btn" onClick={handleChange} />
 
-                    <p className='botomLine'>Not a user ? <span><Link className='botomLink'to="/signup">Resister</Link></span></p>
+                    <p className='botomLine'>Not a user ? <span><Link className='botomLink'to="/signup">Sign Up</Link></span></p>
 
 
                 </form>
