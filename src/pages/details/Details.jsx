@@ -17,9 +17,11 @@ const Details = () => {
       {/* show data of crew */}
       <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
 
+      <div style={{backgroundColor:"black",padding:"100px 0"}}>
       <VideosSection data={data} loading={loading}/>
       <Recommendation mediaType={mediaType} id={id}/>
       <Similar mediaType={mediaType} id={id}/>
+      </div>
     </div>
   )
 }

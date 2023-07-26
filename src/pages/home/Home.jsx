@@ -4,12 +4,14 @@ import Popular from "./popular/Popular"
 import TopRated from "./topRated/TopRated"
 const Home = () => {
   return (
-    <div>
-      <HeroBanner/>
-      <Trending/>
-      <Popular/>
-      <TopRated/>
-    </div>
+    <>
+      <HeroBanner />
+      <div style={{backgroundColor:"black",padding:"100px 0"}}>
+        <Trending />
+        <Popular />
+        <TopRated />
+      </div>
+    </>
   )
 }
 
